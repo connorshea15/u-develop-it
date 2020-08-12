@@ -24,3 +24,12 @@ CREATE TABLE voters (
     email VARCHAR(50) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE votes (
+  id INTEGER PRIMARY KEY,
+  voter_id INTEGER UNSIGNED
+  CONSTRAINT fk_voter FOREIGN KEY (voter_id) REFERENCES voters(id)
+  candidate_id INTEGER UNSIGNED
+  CONSTRAINT fk_candidate FOREIGN KEY (candidate_id) REFERENCES candidates(id)
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
